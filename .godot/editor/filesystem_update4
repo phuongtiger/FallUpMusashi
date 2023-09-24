@@ -2,8 +2,6 @@ res://main.tscn
 res://world.tscn
 res://Player/Player.tscn
 res://Player/ninja.tscn
-res://kunai.gd
 res://kunai.tscn
-res://Timer.gd
-res://Player/ninja.gd
-res://Collection.gd
+res://world.gd
+res://kunai.gd

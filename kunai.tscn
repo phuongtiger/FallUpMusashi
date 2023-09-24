@@ -1,51 +1,43 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgkufjg25om6q"]
+[gd_scene load_steps=11 format=3 uid="uid://dgkufjg25om6q"]
 
 [ext_resource type="Script" path="res://kunai.gd" id="1_0iqe7"]
-[ext_resource type="Texture2D" uid="uid://vdtu1to1g5qv" path="res://Assets/Enermy/Ninja/kunai/kunai_fly_doc.png" id="1_hcpay"]
+[ext_resource type="Texture2D" uid="uid://bo2u4tyywtc3f" path="res://Assets/Enermy/Ninja/Shuriken/shuriken-Sheet.png" id="2_8fs37"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_665vv"]
-atlas = ExtResource("1_hcpay")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sr3u7"]
+atlas = ExtResource("2_8fs37")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_of3qe"]
-atlas = ExtResource("1_hcpay")
+[sub_resource type="AtlasTexture" id="AtlasTexture_avhn6"]
+atlas = ExtResource("2_8fs37")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m7mq0"]
-atlas = ExtResource("1_hcpay")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n6i0"]
+atlas = ExtResource("2_8fs37")
 region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tjokw"]
-atlas = ExtResource("1_hcpay")
-region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7eelq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_665vv")
+"texture": SubResource("AtlasTexture_sr3u7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_of3qe")
+"texture": SubResource("AtlasTexture_avhn6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_m7mq0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tjokw")
+"texture": SubResource("AtlasTexture_4n6i0")
 }],
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jiyih"]
-radius = 4.3849
-height = 21.2254
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufs35"]
+radius = 26.2488
 
 [sub_resource type="Animation" id="Animation_ih8rx"]
 resource_name = "Idle"
-length = 0.35
+length = 0.22
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -54,10 +46,10 @@ tracks/0/path = NodePath("AnimatedSprite2D:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [&"Idle"]
+"values": []
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -66,10 +58,10 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 1, 2]
 }
 
 [sub_resource type="Animation" id="Animation_ex0wd"]
@@ -103,9 +95,9 @@ animation = &"Idle"
 frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(60, 92)
+position = Vector2(-25, 38)
 rotation = -0.66148
-shape = SubResource("CapsuleShape2D_jiyih")
+shape = SubResource("CircleShape2D_ufs35")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"

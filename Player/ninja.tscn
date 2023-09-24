@@ -1,7 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://5008bt04e5f5"]
+[gd_scene load_steps=23 format=3 uid="uid://5008bt04e5f5"]
 
 [ext_resource type="Script" path="res://Player/ninja.gd" id="1_hls3q"]
 [ext_resource type="Texture2D" uid="uid://ds3syqt15hldp" path="res://Assets/Enermy/Ninja/Attack/ninja-attack.png" id="1_py2ce"]
+[ext_resource type="Script" path="res://Player/Ninja1.gd" id="2_wccoo"]
+[ext_resource type="Script" path="res://Player/Ninja2.gd" id="4_b753f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g6vwo"]
 radius = 18.0
@@ -101,31 +103,35 @@ animations = [{
 
 [sub_resource type="Animation" id="Animation_mphik"]
 resource_name = "Attack"
-length = 1.15
+length = 1.05
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [&"Attack"]
+"values": [7, 8, 9, 10, 11, 0, 1, 2, 3, 4, 5]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+
+[sub_resource type="Animation" id="Animation_hfhii"]
+resource_name = "Attack_Another"
+length = 1.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [8, 9, 10, 11, 0, 1, 2, 3, 4, 5, 6, 7]
+"values": [2, 3, 4, 5, 6, 7, 8, 9, 11, 0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_sf886"]
@@ -140,31 +146,58 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [8]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tqr45"]
 _data = {
 "Attack": SubResource("Animation_mphik"),
+"Attack_Another": SubResource("Animation_hfhii"),
 "RESET": SubResource("Animation_sf886")
 }
 
-[node name="Ninja" type="CharacterBody2D"]
+[node name="Ninja" type="Node2D"]
 script = ExtResource("1_hls3q")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Ninja1" type="CharacterBody2D" parent="."]
+script = ExtResource("2_wccoo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ninja1"]
 position = Vector2(-41, 42)
 shape = SubResource("CapsuleShape2D_g6vwo")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ninja1"]
 position = Vector2(2.38419e-07, -1)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_2mlog")
 animation = &"Attack"
-frame = 1
+frame = 8
 metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationNinja1" type="AnimationPlayer" parent="Ninja1"]
+autoplay = "Attack"
+libraries = {
+"": SubResource("AnimationLibrary_tqr45")
+}
+
+[node name="Ninja2" type="CharacterBody2D" parent="."]
+position = Vector2(932, -1)
+script = ExtResource("4_b753f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ninja2"]
+position = Vector2(35, 48)
+shape = SubResource("CapsuleShape2D_g6vwo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ninja2"]
+position = Vector2(2.38419e-07, -1)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_2mlog")
+animation = &"Attack"
+frame = 8
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="AnimationNinja2" type="AnimationPlayer" parent="Ninja2"]
 autoplay = "Attack"
 libraries = {
 "": SubResource("AnimationLibrary_tqr45")
