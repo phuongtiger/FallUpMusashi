@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://e0ejaktltkuh"]
+[gd_scene load_steps=17 format=3 uid="uid://e0ejaktltkuh"]
 
 [ext_resource type="PackedScene" uid="uid://be8s7dgyy5qj8" path="res://Player/Player.tscn" id="1_3wbff"]
 [ext_resource type="Script" path="res://world.gd" id="1_mt1ch"]
+[ext_resource type="Texture2D" uid="uid://b1mt0uq1myp3i" path="res://Assets/Background/MusashiFallUp_bg.png" id="2_87pg2"]
 [ext_resource type="PackedScene" uid="uid://5008bt04e5f5" path="res://Player/ninja.tscn" id="2_facvf"]
 [ext_resource type="Texture2D" uid="uid://bqkeel78iemj7" path="res://Assets/Ground/Ground.png" id="3_f75y1"]
 [ext_resource type="Texture2D" uid="uid://bvcxyg0ixyquk" path="res://Assets/Wall/wall.png" id="4_eaj4h"]
@@ -36,6 +37,17 @@ sources/2 = SubResource("TileSetAtlasSource_8gnvi")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_mt1ch")
+
+[node name="MusashiFallUpBg" type="Sprite2D" parent="."]
+position = Vector2(266, 325)
+scale = Vector2(2.63785, 2.63785)
+texture = ExtResource("2_87pg2")
+
+[node name="MusashiFallUpBg" type="Sprite2D" parent="MusashiFallUpBg"]
+position = Vector2(264.759, -0.229598)
+scale = Vector2(0.998872, 0.998872)
+texture = ExtResource("2_87pg2")
+flip_h = true
 
 [node name="Player" type="Node2D" parent="."]
 

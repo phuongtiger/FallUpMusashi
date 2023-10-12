@@ -1,7 +1,6 @@
-res://main.tscn
 res://world.tscn
+res://main.tscn
 res://Player/Player.tscn
 res://Player/ninja.tscn
 res://kunai.tscn
-res://world.gd
 res://kunai.gd
